@@ -9,7 +9,7 @@ def resolve(m, dim, arr = []):
     m.params.Heuristics = 0
     dim_2 = int(sqrt(dim))
 
-    # ----- Cria variaveis do problema -----
+    # ----- Create problem variables -----
     x = [ [ [ [] for k in range(dim) ] for j in range(dim) ] for i in range(dim)]
     for i in range(dim):
         for j in range(dim):
@@ -17,13 +17,13 @@ def resolve(m, dim, arr = []):
                 for k in range(dim):
                     x[i][j][k] = m.addVar(vtype=GRB.BINARY, name="x_" + str(i+1) + "," + str(j+1) + "," + str(k+1)) # Possibilidades
 
-    # ----- Atualiza modelo com as variaveis -----
+    # ----- Update model with new variables -----
     m.update()
 
-    # ----- Funcao objetivo -----
+    # ----- Objective function -----
     m.setObjective(0, GRB.MINIMIZE)
 
-    # ----- Restricao - toda posicao da tabela deve ser preenchida com somente um valor -----
+    # ----- Constraint - every table position must be filled with only one value -----
     for i in range(dim):
         for j in range(dim):
             if arr[i][j] == 0:
@@ -32,7 +32,7 @@ def resolve(m, dim, arr = []):
 
     R = []
 
-    # ----- Restricao - cada elemento deve aparecer somente uma vez em cada coluna -----
+    # ----- Constraint - must have only one element by column -----
     for j in range(dim):
         for k in range(dim):
             if k+1 not in [line[j] for line in arr]:
@@ -45,7 +45,7 @@ def resolve(m, dim, arr = []):
                     id_current_constr += 1
                     R = []
 
-    # ----- Restricao - cada elemento deve aparecer somente uma vez em cada linha -----
+    # ----- Constraint - must have only one element by row -----
     for i in range(dim):
         for k in range(dim):
             if k+1 not in arr[i][:]:
@@ -58,7 +58,7 @@ def resolve(m, dim, arr = []):
                     id_current_constr += 1
                     R = []
 
-    # ----- Restricao - cada elemento deve aparecer somente uma vez em cada subquadrado -----
+    # ----- Constraint - must have only one element in each ubsquare -----
     for a in range(dim_2):
         for b in range(dim_2):
             for k in range(dim):
@@ -74,7 +74,7 @@ def resolve(m, dim, arr = []):
 
     m.update()
 
-    # with open("constrs", "w") as f:
+    # with open("Output/constrs", "w") as f:
     #     for k in m.getConstrs():
     #         f.write(str(k.ConstrName) + " " + str(m.getRow(k)))
     #         f.write('\n')
@@ -129,12 +129,12 @@ if __name__ == '__main__':
         print("--------------------------------------------------\n")
 
         try:
-            m.write("Saida_" + str(dim) + "x" + str(dim) + ".sol")
-            m.write("Saida_" + str(dim) + "x" + str(dim) + ".lp")
-            m.write("Saida_" + str(dim) + "x" + str(dim) + ".mps")
-            print("Escrito o arquivo " + "Saida_" + str(dim) + "x" + str(dim) + ".sol\n")
-            print("Escrito o arquivo " + "Saida_" + str(dim) + "x" + str(dim) + ".sol\n")
-            print("Escrito o arquivo " + "Saida_" + str(dim) + "x" + str(dim) + ".sol\n")
+            m.write("Output/Output_" + str(dim) + "x" + str(dim) + ".sol")
+            m.write("Output/Output_" + str(dim) + "x" + str(dim) + ".lp")
+            m.write("Output/Output_" + str(dim) + "x" + str(dim) + ".mps")
+            print("File written " + "Output_" + str(dim) + "x" + str(dim) + ".sol\n")
+            print("File written " + "Output_" + str(dim) + "x" + str(dim) + ".sol\n")
+            print("File written " + "Output_" + str(dim) + "x" + str(dim) + ".sol\n")
         except Exception as e:
             print('\nERROR ' + e + '\n')
 
@@ -154,8 +154,8 @@ if __name__ == '__main__':
         print("Solution:\n")
         print_grid(grid,dim)
 
-        write_sudoku(grid,dim,"sudoku_" + str(dim) + "x" + str(dim) + ".sol")
-        print("\nEscrito o arquivo " + "sudoku_" + str(dim) + "x" + str(dim) + ".sol\n")
+        write_sudoku(grid,dim,"Output/sudoku_" + str(dim) + "x" + str(dim) + ".sol")
+        print("\nFile written " + "sudoku_" + str(dim) + "x" + str(dim) + ".sol\n")
 
     elif m.Status == GRB.INFEASIBLE:
         print("\nSudoku Infeasible\n")
