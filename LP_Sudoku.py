@@ -1,8 +1,10 @@
-from gurobipy import *
-from math import sqrt
-from sudoku import *
-import time
 import sys
+import time
+
+import gurobipy
+from math import sqrt
+
+import sudokuHelper as sh
 
 def resolve(m, dim, arr = []):
     id_current_constr = 1
@@ -15,19 +17,19 @@ def resolve(m, dim, arr = []):
         for j in range(dim):
             if arr[i][j] == 0:
                 for k in range(dim):
-                    x[i][j][k] = m.addVar(vtype=GRB.BINARY, name="x_" + str(i+1) + "," + str(j+1) + "," + str(k+1)) # Possibilidades
+                    x[i][j][k] = m.addVar(vtype=gurobipy.GRB.BINARY, name="x_" + str(i+1) + "," + str(j+1) + "," + str(k+1)) # Possibilidades
 
     # ----- Update model with new variables -----
     m.update()
 
     # ----- Objective function -----
-    m.setObjective(0, GRB.MINIMIZE)
+    m.setObjective(0, gurobipy.GRB.MINIMIZE)
 
     # ----- Constraint - every table position must be filled with only one value -----
     for i in range(dim):
         for j in range(dim):
             if arr[i][j] == 0:
-                m.addConstr( sum( x[i][j][:dim] ), GRB.EQUAL, 1, "R_pos"+str(id_current_constr) )
+                m.addConstr( sum( x[i][j][:dim] ), gurobipy.GRB.EQUAL, 1, "R_pos"+str(id_current_constr) )
                 id_current_constr += 1
 
     R = []
@@ -41,7 +43,7 @@ def resolve(m, dim, arr = []):
                         R.append(x[i][j][k])
                 #m.addConstr( sum( [x[i][j][k] for i in range(dim)] ), GRB.EQUAL, 1, "R_col"+str(id_current_constr) )
                 if R != []:
-                    m.addConstr( sum(R), GRB.EQUAL, 1, "R_col"+str(id_current_constr) )
+                    m.addConstr( sum(R), gurobipy.GRB.EQUAL, 1, "R_col"+str(id_current_constr) )
                     id_current_constr += 1
                     R = []
 
@@ -54,21 +56,21 @@ def resolve(m, dim, arr = []):
                         R.append(x[i][j][k])
                 #m.addConstr( sum( [x[i][j][k] for j in range(dim)] ), GRB.EQUAL, 1, "R_row"+str(id_current_constr) )
                 if R != []:
-                    m.addConstr( sum(R), GRB.EQUAL, 1, "R_row"+str(id_current_constr) )
+                    m.addConstr( sum(R), gurobipy.GRB.EQUAL, 1, "R_row"+str(id_current_constr) )
                     id_current_constr += 1
                     R = []
 
-    # ----- Constraint - must have only one element in each ubsquare -----
+    # ----- Constraint - must have only one element in each subsquare -----
     for a in range(dim_2):
         for b in range(dim_2):
             for k in range(dim):
-                if not in_subsquare(k+1,arr,dim_2,a,b):
+                if not sh.in_subsquare(k+1,arr,dim_2,a,b):
                     for i in range(dim_2):
                         for j in range(dim_2):
                             if arr[i + dim_2*a][j + dim_2*b] == 0:
                                 R.append(x[i + dim_2*a][j + dim_2*b][k])
                     if R != []:
-                        m.addConstr( sum(R), GRB.EQUAL, 1, "R_sub"+str(id_current_constr) )
+                        m.addConstr( sum(R), gurobipy.GRB.EQUAL, 1, "R_sub"+str(id_current_constr) )
                         id_current_constr += 1
                         R = []
 
@@ -95,8 +97,8 @@ if __name__ == '__main__':
 
     if len(sys.argv) == 2:
         try:
-            dim, arr = read_file_sudoku(sys.argv[1])
-            if already_solved(arr,dim):
+            dim, arr = sh.read_file_sudoku(sys.argv[1])
+            if sh.already_solved(arr,dim):
                 print("\n Sudoku already solved \n")
                 sys.exit(0)
         except Exception as e:
@@ -110,7 +112,7 @@ if __name__ == '__main__':
             print('\nERROR ' + e + '\n')
 
     # ----- Inicializa modelo -----
-    m = Model("Sudoku")
+    m = gurobipy.Model("Sudoku")
 
     print("\n------------------ Optimization Started ------------------\n")
 
@@ -123,7 +125,7 @@ if __name__ == '__main__':
 
     print("------------------- Optimization Finished -------------------\n")
 
-    if m.Status == GRB.OPTIMAL:
+    if m.Status == gurobipy.GRB.OPTIMAL:
         print("\n------------------- Results -------------------")
         print("Execution time: " + str(t))
         print("--------------------------------------------------\n")
@@ -141,7 +143,7 @@ if __name__ == '__main__':
         grid = [[arr[w][k] for k in range(dim)] for w in range(dim)]
 
         print("Original Sudoku:\n")
-        print_grid(grid,dim)
+        sh.print_grid(grid,dim)
         print('\n')
 
         for i in range(dim):
@@ -152,10 +154,10 @@ if __name__ == '__main__':
                             grid[i][j] = k+1
 
         print("Solution:\n")
-        print_grid(grid,dim)
+        sh.print_grid(grid,dim)
 
-        write_sudoku(grid,dim,"Output/sudoku_" + str(dim) + "x" + str(dim) + ".sol")
+        sh.write_sudoku(grid,dim,"Output/sudoku_" + str(dim) + "x" + str(dim) + ".sol")
         print("\nFile written " + "sudoku_" + str(dim) + "x" + str(dim) + ".sol\n")
 
-    elif m.Status == GRB.INFEASIBLE:
+    elif m.Status == gurobipy.GRB.INFEASIBLE:
         print("\nSudoku Infeasible\n")
