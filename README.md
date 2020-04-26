@@ -24,7 +24,7 @@ Sudoku is a logic puzzle game with the objective to fill a 9x9 grid with digits 
 - Each column must have all digits from 1 to 9
 - Each of the nine 3x3 subgrid must have all digits from 1 to 9
 
-<div style="display:flex; justify-content:space-evenly">
+<div align="center">
 <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Sudoku_Puzzle_by_L2G-20050714_standardized_layout.svg" alt="Sudoku unsolved" width="300"/>
 <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Sudoku_Puzzle_by_L2G-20050714_solution_standardized_layout.svg" alt="Sudoku solved" width="300"/>
 </div>
@@ -47,7 +47,7 @@ In this case we just want to find a combination of variables that solves the puz
 
 ![formula](https://render.githubusercontent.com/render/math?math=$\sum_{k=1}^nx_{ijk}=1\quad%20for\quad%20i,j\in[1,n])
 
-![formula](https://render.githubusercontent.com/render/math?math=$\sum_{j=3p-2}^{3p}\sum_{i=3q-2}^{3q}x_{ijk}=1\quad%20for\quad%20k\in[1,n]:and:p,q\in[1,\sqrt%20n])
+![formula](https://render.githubusercontent.com/render/math?math=$\sum_{j=3p-2}^{3p}\sum_{i=3q-2}^{3q}x_{ijk}=1\quad%20for\quad%20k\in[1,n]\\:and\\:p,q\in[1,\sqrt%20n])
 
 <!-- i+p and j+q does not work -->
 <!-- ![formula](https://render.githubusercontent.com/render/math?math=$\sum_{j=1}^{\sqrt%20n}\sum_{i=1}^{\sqrt%20n}x_{i+pj+qk}=1\quad%20for\quad%20k\in[1,n]\\:and\\:p,q\in[1,\sqrt%20n]) -->
