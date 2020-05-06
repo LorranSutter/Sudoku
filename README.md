@@ -1,11 +1,10 @@
 # Sudoku
 
 <p align="center">
-  
-  <p>
   Project created to solve sudoku game for any square dimension (9x9, 16x16, 25x25 ...) employing linear problem concepts.
-  </p>
+</p>
 
+<p align="center">
   <a href="#usage-example">Usage example</a>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#what-is-sudoku">What is sudoku?</a>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#what-is-linear-programming">What is linear programming?</a>&nbsp;&nbsp;|&nbsp;&nbsp;
