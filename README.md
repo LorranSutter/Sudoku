@@ -2,7 +2,16 @@
 
 Project created to solve sudoku game for any square dimension (9x9, 16x16, 25x25 ...) employing linear problem concepts.
 
-## Usage Example
+<p align="center">
+  <a href="#usage-example">Usage example</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#what-is-sudoku">What is sudoku?</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#what-is-linear-programming">What is linear programming?</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#dependencies">Dependencies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#sudoku-model">Sudoku model</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#credits">Credits</a>
+</p>
+
+## Usage example
 
 ```sh
 python3 LP_Sudoku.py sudoku_9x9.txt
@@ -29,7 +38,7 @@ Sudoku is a logic puzzle game with the objective to fill a 9x9 grid with digits 
 <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Sudoku_Puzzle_by_L2G-20050714_solution_standardized_layout.svg" alt="Sudoku solved" width="300"/>
 </div>
 
-## What is Linear Programming?
+## What is linear programming?
 
 Linear programming is a technique used to solve optimization problems where the elements have a linear relationship.
 
