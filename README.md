@@ -5,21 +5,21 @@
 </p>
 
 <p align="center">
-  <a href="#usage-example">Usage example</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#what-is-sudoku">What is sudoku?</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#what-is-linear-programming">What is linear programming?</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#dependencies">Dependencies</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#sudoku-model">Sudoku model</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#credits">Credits</a>
+  <a href="#runner-how-to-run">How to run</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#game_die-what-is-sudoku">What is sudoku?</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#pencil2-what-is-linear-programming">What is linear programming?</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#pencil-dependencies">Dependencies</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#triangular_ruler-sudoku-model">Sudoku model</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#cookie-credits">Credits</a>
 </p>
 
-## Usage example
+## :runner: How to run
 
 ```sh
 python3 LP_Sudoku.py sudoku_9x9.txt
 ```
 
-## Dependencies
+## :pencil: Dependencies
 
 gurobipy library must be installed.
 
@@ -27,7 +27,7 @@ Installation instructions in [Gurobi](https://www.gurobi.com/documentation/9.0/q
 
 ---
 
-## What is sudoku?
+## :game_die: What is sudoku?
 
 Sudoku is a logic puzzle game with the objective to fill a 9x9 grid with digits from 1 to 9. It respects a set of rules to fill this grid:
 
@@ -40,13 +40,13 @@ Sudoku is a logic puzzle game with the objective to fill a 9x9 grid with digits 
 <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Sudoku_Puzzle_by_L2G-20050714_solution_standardized_layout.svg" alt="Sudoku solved" width="300"/>
 </div>
 
-## What is linear programming?
+## :pencil2: What is linear programming?
 
 Linear programming is a technique used to solve optimization problems where the elements have a linear relationship.
 
 Linear programs aims to maximize a **objective function** made of **decision variables** subject to **constraints** which ensures that all the elements have a linear relationship and all variables are non-negative.
 
-## Sudoku model
+## :triangular_ruler: Sudoku model
 
 In this case we just want to find a combination of variables that solves the puzzle. Therefore there will be no objetive function do be maximized, only linear constraints as follows:
 
@@ -70,6 +70,6 @@ The first and the second constraints ensures that all columns and all rows will 
 
 ---
 
-## Credits
+## :cookie: Credits
 
 Thanks to [Harshit Sidhwa](https://github.com/harshitsidhwa?tab=repositories) in providing back tracking [code](https://repl.it/@rui1337/backtrack-sudoku-solver) as an inspiration to solve this problem.
