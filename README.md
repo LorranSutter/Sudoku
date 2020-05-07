@@ -97,7 +97,7 @@ In this case we just want to find a combination of variables that solves the puz
 
 We want to generalize the problem to solve a sudoku of any square dimension (9x9, 16x16, 25x25 ...). For that purpose, **n** represents the dimension of the puzzle, **x** are decision variables, **i** represents the columns, **j** represents the rows, **k** represents all possible digitis depending on the puzzle dimension, and **p** and **q** represents an auxiliar variable to iterate in all subgrids.
 
-The first and the second constraints ensures that all columns and all rows will be filled must have only one of the available digits. The third constraint ensures that each cell in the grid will have only one digit. The last constraint ensures that all subgrid will have only on of the available digits.
+The first and the second constraints ensures that all columns and all rows will be filled must have only one of the available digits. The third constraint ensures that each cell in the grid will have only one digit. The last constraint ensures that all subgrid will have only one of the available digits.
 
 ---
 
