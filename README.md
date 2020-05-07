@@ -6,9 +6,9 @@
 
 <p align="center">
   <a href="#runner-how-to-run">How to run</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#pencil-dependencies">Dependencies</a>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#game_die-what-is-sudoku">What is sudoku?</a>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#pencil2-what-is-linear-programming">What is linear programming?</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-  <a href="#pencil-dependencies">Dependencies</a>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#triangular_ruler-sudoku-model">Sudoku model</a>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#cookie-credits">Credits</a>
 </p>
