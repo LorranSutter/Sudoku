@@ -1,4 +1,6 @@
-# Sudoku
+<h1 align="center">
+  Sudoku
+</h1>
 
 <p align="center">
   Project created to solve sudoku game for any square dimension (9x9, 16x16, 25x25 ...) employing linear problem concepts.
