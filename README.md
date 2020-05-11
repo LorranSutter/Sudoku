@@ -7,6 +7,10 @@
 </p>
 
 <p align="center">
+  You can also check a linear solution to solve Radar Positioning problem <a href='https://github.com/LorranSutter/Radar-positioning'>here</a>.
+</p>
+
+<p align="center">
   <a href="#runner-how-to-run">How to run</a>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#pencil-dependencies">Dependencies</a>&nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="#game_die-what-is-sudoku">What is sudoku?</a>&nbsp;&nbsp;|&nbsp;&nbsp;
