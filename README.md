@@ -89,19 +89,19 @@ In this case we just want to find a combination of variables that solves the puz
 
 <div align="center">
 
-![formula](https://render.githubusercontent.com/render/math?math=$\sum_{i=1}^nx_{ijk}=1\quad%20\text{for}\quad%20j,k\in[1,n])
+$$\sum_{i=1}^nx_{ijk} \ = \ 1 \ \text{for} \ j,k \ \in \ [1,n]$$
 
-![formula](https://render.githubusercontent.com/render/math?math=$\sum_{j=1}^nx_{ijk}=1\quad%20\text{for}\quad%20i,k\in[1,n])
+$$\sum_{j=1}^nx_{ijk} \ = \ 1 \ \text{for} \ i,k \ \in \ [1,n]$$
 
-![formula](https://render.githubusercontent.com/render/math?math=$\sum_{k=1}^nx_{ijk}=1\quad%20\text{for}\quad%20i,j\in[1,n])
+$$\sum_{k=1}^nx_{ijk} \ = \ 1 \ \text{for} \ i,j \ \in \ [1,n]$$
 
-![formula](https://render.githubusercontent.com/render/math?math=$\sum_{j=3p-2}^{3p}\sum_{i=3q-2}^{3q}x_{ijk}=1\quad%20\text{for}\quad%20k\in[1,n]\\:\text{and}\\:p,q\in[1,\sqrt%20n])
+$$\sum_{j=3p-2}^{3p} \ \sum_{i=3q-2}^{3q}x_{ijk} \ = \ 1 \ \text{for} \ k \ \in \ [1,n] \ \text{and} \ p,q \ \in \ \left[ 1,\sqrt n \right]$$
 
-<!-- i+p and j+q does not work -->
-<!-- ![formula](https://render.githubusercontent.com/render/math?math=$\sum_{j=1}^{\sqrt%20n}\sum_{i=1}^{\sqrt%20n}x_{i+pj+qk}=1\quad%20for\quad%20k\in[1,n]\\:and\\:p,q\in[1,\sqrt%20n]) -->
+<!-- Different way to right the formula above. But it is not quite right yet. -->
+<!-- $$\sum_{j=1}^{\sqrt n}\sum_{i=1}^{\sqrt n}x_{i + pj + qk} \ = \ 1 \ for \ k \ \in \ [1,n] \ and \ p,q \ \in \ \left[ 1,\sqrt n \right]$$ -->
 </div>
 
-We want to generalize the problem to solve a sudoku of any square dimension (9x9, 16x16, 25x25 ...). For that purpose, **n** represents the dimension of the puzzle, **x** are decision variables, **i** represents the columns, **j** represents the rows, **k** represents all possible digitis depending on the puzzle dimension, and **p** and **q** represents an auxiliar variable to iterate in all subgrids.
+We want to generalize the problem to solve a sudoku of any square dimension (9x9, 16x16, 25x25 ...). For that purpose, $n$ represents the dimension of the puzzle, $x_{ijk}$ are decision variables, $i$ represents the columns, $j$ represents the rows, $k$ represents all possible digitis depending on the puzzle dimension, and $p$ and $q$ represents an auxiliar variable to iterate in all subgrids.
 
 The first and the second constraints ensures that all columns and all rows will be filled must have only one of the available digits. The third constraint ensures that each cell in the grid will have only one digit. The last constraint ensures that all subgrid will have only one of the available digits.
 
